@@ -1,7 +1,10 @@
+// components/Layout/Navbar.tsx
 'use client'
 
 import React from 'react';
-import { Box, Flex, Text, Button, HStack, VStack } from '@chakra-ui/react';
+import { Box, Flex, Text, Button, Icon, HStack, VStack } from '@chakra-ui/react';
+import { FaWallet } from 'react-icons/fa'; 
+import { MdDashboard, MdCalendarToday } from 'react-icons/md';
 
 export const Navbar = () => {
   return (
@@ -24,8 +27,7 @@ export const Navbar = () => {
             align="center" 
             justify="center"
           >
-            {/* ใช้ Emoji แทนไอคอนชั่วคราว */}
-            <Text fontSize="2xl">📊</Text> 
+            <Icon as={MdDashboard} w={6} h={6} />
           </Flex>
           <Box>
             <Text fontSize="xl" fontWeight="bold" lineHeight="shorter">
@@ -47,10 +49,9 @@ export const Navbar = () => {
             size="md"
             borderRadius="full"
             px={6}
-            gap={2}
+            leftIcon={<FaWallet />} // ใส่แบบนี้ตรงๆ ได้เลย
           >
-            <span>💰</span> {/* Emoji ถุงเงิน */}
-            <Text>รายรับ & รายจ่าย</Text>
+            รายรับ & รายจ่าย
           </Button>
 
           <Button 
@@ -60,10 +61,9 @@ export const Navbar = () => {
             size="md"
             borderRadius="full"
             px={6}
-            gap={2}
+            leftIcon={<MdCalendarToday />} // ใส่แบบนี้ตรงๆ ได้เลย
           >
-            <span>📅</span> {/* Emoji ปฏิทิน */}
-            <Text>ระบบจองอุปกรณ์</Text>
+            ระบบจองอุปกรณ์
           </Button>
         </HStack>
 

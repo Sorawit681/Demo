@@ -3,13 +3,11 @@
 
 import React from 'react';
 import { Box, Text } from '@chakra-ui/react';
-// ใช้ @ เพื่ออ้างอิงจากรากโปรเจค (root) จะได้หาไฟล์เจอแน่นอน
-import { Layout } from '@/components/Layout/Layout'; 
+import { Layout } from '@/components/Layout/Layout'; // ต้องตรงกับชื่อไฟล์ Layout.tsx
 
 export default function Home() {
   return (
     <Layout>
-      {/* ส่วนหัวข้อของหน้า */}
       <Box mb={6}>
         <Text fontSize="2xl" fontWeight="bold" color="purple.700">
           รายรับ & รายจ่าย
@@ -17,7 +15,7 @@ export default function Home() {
         <Text color="gray.500">ติดตามและจัดการการเงินของคุณ</Text>
       </Box>
       
-      {/* พื้นที่ว่างสำหรับวาง Stat Cards (ที่เราจะทำกันต่อไป) */}
+      {/* พื้นที่สำหรับ Stat Cards */}
       <Box 
         h="200px" 
         border="2px dashed" 
