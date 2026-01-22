@@ -5,9 +5,15 @@ import React from 'react';
 import { Box, VStack, HStack, Text, Icon, Button, Flex } from '@chakra-ui/react';
 import { FaWallet } from 'react-icons/fa';
 import { MdDashboard, MdCalendarToday } from 'react-icons/md';
-
+import Link from 'next/link'; // ✅ ต้องมีตัวนี้เพื่อเปลี่ยนหน้า
+import { usePathname } from 'next/navigation'; // ✅ ใช้เช็คว่าอยู่หน้าไหน
 
 export const Sidebar = () => {
+  const pathname = usePathname(); // ดึง path ปัจจุบันมาดู
+
+  // ฟังก์ชั่นเช็คว่าปุ่มไหนต้องเป็นสีม่วง
+  const isActive = (path: string) => pathname === path;
+
   return (
     <Box
       as="nav"
@@ -47,30 +53,39 @@ export const Sidebar = () => {
         {/* Menu Items */}
         <VStack spacing={2} align="stretch">
             
-            <Button
-                variant="ghost"
-                justifyContent="flex-start"
-                leftIcon={<FaWallet />} 
-                color="purple.600"
-                bg="purple.50"
-                _hover={{ bg: 'purple.100' }}
-                fontWeight="semibold"
-                size="lg"
-            >
-                รายรับ & รายจ่าย
-            </Button>
+            {/* เมนู 1: หน้าหลัก (รายรับรายจ่าย) */}
+            <Link href="/" passHref>
+              <Button
+                  as="a" // ให้ทำตัวเป็น Link
+                  variant="ghost"
+                  justifyContent="flex-start"
+                  leftIcon={<FaWallet />} 
+                  w="100%"
+                  // ถ้าอยู่หน้าแรก (/) ให้เป็นสีม่วง, ถ้าไม่ใช่เป็นสีเทา
+                  bg={isActive('/') ? 'purple.50' : 'transparent'}
+                  color={isActive('/') ? 'purple.600' : 'gray.500'}
+                  _hover={{ bg: 'purple.100' }}
+              >
+                  รายรับ & รายจ่าย
+              </Button>
+            </Link>
 
-            <Button
-                variant="ghost"
-                justifyContent="flex-start"
-                leftIcon={<MdCalendarToday />}
-                color="gray.500"
-                _hover={{ color: 'purple.600', bg: 'gray.50' }}
-                fontWeight="medium"
-                size="lg"
-            >
-                ระบบจองอุปกรณ์
-            </Button>
+            {/* เมนู 2: หน้าจอง (Booking) */}
+            <Link href="/booking" passHref>
+              <Button
+                  as="a"
+                  variant="ghost"
+                  justifyContent="flex-start"
+                  leftIcon={<MdCalendarToday />}
+                  w="100%"
+                  // ถ้าอยู่หน้า booking (/booking) ให้เป็นสีม่วง
+                  bg={isActive('/booking') ? 'purple.50' : 'transparent'}
+                  color={isActive('/booking') ? 'purple.600' : 'gray.500'}
+                  _hover={{ bg: 'purple.100' }}
+              >
+                  ระบบจองอุปกรณ์
+              </Button>
+            </Link>
 
         </VStack>
       </VStack>
