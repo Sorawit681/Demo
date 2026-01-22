@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { Box, Text } from '@chakra-ui/react';
-import { Layout } from '@/components/Layout/Layout'; // ต้องตรงกับชื่อไฟล์ Layout.tsx
+import { Layout } from '../components/Layout/layout'; // ต้องตรงกับชื่อไฟล์ Layout.tsx
 
 export default function Home() {
   return (
