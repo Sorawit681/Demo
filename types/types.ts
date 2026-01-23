@@ -1,6 +1,7 @@
 import { IconType } from "react-icons";
 
 export type BookingStatus = 'confirmed' | 'pending' | 'problem';
+export type SummaryCardColor = 'blue' | 'green' | 'orange' | 'red';
 
 export type Booking = {
   id: string;
@@ -16,7 +17,7 @@ export type SummaryCardItem = {
   title: string;
   value: number;
   sub: string;
-  color: string;
+  color: SummaryCardColor;
   icon: IconType;
 };
 
