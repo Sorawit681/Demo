@@ -1,7 +1,17 @@
 'use client';
 
-import { Layout } from '@/components/Layout/layout';
-import BookingDashboardPage from '@/components/Dashboard/booking/BookingDashboardPage';
+import { useState } from 'react';
+import SummaryCards from '@/components/Dashboard/booking/SummaryCards';
+import BookingTable from '@/components/Dashboard/booking/BookingTable';
+import EquipmentPieChart from '@/components/Dashboard/booking/EquipmentPieChart';
+import TimeSlotBarChart from '@/components/Dashboard/booking/TimeSlotBarChart';
+import UtilizationTable from '@/components/Dashboard/booking/UtilizationTable';
+
+import { bookings } from '@/mocks/mock';
+import { BookingStatus } from '@/types/types';
+import { filterBookings } from '@/utils/booking/filterBookings';
+import { Layout } from '@/components/Layout/Layout';
+
 
 export default function Page() {
   const [filter, setFilter] = useState({
