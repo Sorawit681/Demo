@@ -1,11 +1,40 @@
-import { Booking, SummaryCard, PieItem, TimeSlot, Utilization } from './types';
+import { Booking, SummaryCardItem , PieItem, TimeSlot, Utilization } from '@/types/types';
 
-export const summaryCards: SummaryCard[] = [
-  { title: 'จำนวนอุปกรณ์ทั้งหมด', value: 150, color: 'bg-blue-600' },
-  { title: 'อุปกรณ์ที่ว่าง', value: 146, color: 'bg-green-600' },
-  { title: 'อุปกรณ์ที่ถูกจอง', value: 4, color: 'bg-orange-500' },
-  { title: 'การจองที่มีปัญหา', value: 2, color: 'bg-red-600' },
+import { FiBox, FiCheckCircle, FiClock, FiAlertTriangle } from 'react-icons/fi';
+
+
+export const summaryCardItem: SummaryCardItem[] = [
+  {
+    title: 'จำนวนอุปกรณ์ทั้งหมด',
+    value: 150,
+    sub: 'รายการทั้งหมด',
+    color: 'bg-gradient-to-br from-blue-500 to-indigo-600',
+    icon: FiBox,
+  },
+  {
+    title: 'อุปกรณ์ที่ว่าง',
+    value: 146,
+    sub: 'พร้อมใช้งาน',
+    color: 'bg-gradient-to-br from-green-500 to-emerald-600',
+    icon: FiCheckCircle,
+  },
+  {
+    title: 'อุปกรณ์ที่ถูกจอง',
+    value: 4,
+    sub: 'กำลังใช้งาน',
+    color: 'bg-gradient-to-br from-orange-500 to-amber-600',
+    icon: FiClock,
+  },
+  {
+    title: 'การจองที่มีปัญหา',
+    value: 2,
+    sub: 'ต้องดำเนินการ',
+    color: 'bg-gradient-to-br from-red-500 to-rose-600',
+    icon: FiAlertTriangle,
+  },
 ];
+
+
 
 export const bookings: Booking[] = [
   { id: 'BK001', equipment: 'โปรเจคเตอร์', user: 'สมชาย ใจดี', date: '2026-01-20', time: '14:00-16:00', center: 'ศูนย์ A1', status: 'confirmed' },

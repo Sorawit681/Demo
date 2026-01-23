@@ -1,3 +1,5 @@
+import { IconType } from "react-icons";
+
 export type BookingStatus = 'confirmed' | 'pending' | 'problem';
 
 export type Booking = {
@@ -10,10 +12,12 @@ export type Booking = {
   status: BookingStatus;
 };
 
-export type SummaryCard = {
+export type SummaryCardItem = {
   title: string;
   value: number;
+  sub: string;
   color: string;
+  icon: IconType;
 };
 
 export type PieItem = {
