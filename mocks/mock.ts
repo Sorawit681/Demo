@@ -37,18 +37,18 @@ export const summaryCardItem: SummaryCardItem[] = [
 
 
 export const bookings: Booking[] = [
-  { id: 'BK001', equipment: 'โปรเจคเตอร์', user: 'สมชาย ใจดี', date: '2026-01-20', time: '14:00-16:00', center: 'ศูนย์ A1', status: 'confirmed' },
-  { id: 'BK002', equipment: 'กล้องถ่ายรูป', user: 'สมหญิง รักสะอาด', date: '2026-01-20', time: '10:00-12:00', center: 'ศูนย์ B2', status: 'confirmed' },
-  { id: 'BK003', equipment: 'ไมโครโฟน', user: 'ประเสริฐ มั่นคง', date: '2026-01-21', time: '08:00-10:00', center: 'ศูนย์ A1', status: 'pending' },
-  { id: 'BK004', equipment: 'ลำโพง', user: 'วิไล สวยงาม', date: '2026-01-21', time: '14:00-16:00', center: 'ศูนย์ C3', status: 'problem' },
+  { id: 'BK001', equipment: 'รถไถนา', user: 'สมชาย ใจดี', date: '2026-01-20', time: '14:00-16:00', center: 'ศูนย์ A1', status: 'confirmed' },
+  { id: 'BK002', equipment: 'เครื่องพ่นยา', user: 'สมหญิง รักสะอาด', date: '2026-01-20', time: '10:00-12:00', center: 'ศูนย์ B2', status: 'confirmed' },
+  { id: 'BK003', equipment: 'เครื่องหว่านปุ๋ย', user: 'ประเสริฐ มั่นคง', date: '2026-01-21', time: '08:00-10:00', center: 'ศูนย์ A1', status: 'pending' },
+  { id: 'BK004', equipment: 'ปั๊มน้ำ', user: 'วิไล สวยงาม', date: '2026-01-21', time: '14:00-16:00', center: 'ศูนย์ C3', status: 'problem' },
 ];
 
 export const equipmentPie: PieItem[] = [
-  { name: 'โปรเจคเตอร์', value: 45, color: '#3b82f6' },
-  { name: 'กล้องถ่ายรูป', value: 38, color: '#10b981' },
-  { name: 'ไมโครโฟน', value: 32, color: '#f59e0b' },
-  { name: 'ลำโพง', value: 28, color: '#ef4444' },
-  { name: 'คอมพิวเตอร์', value: 25, color: '#8b5cf6' },
+  { name: 'รถไถนา', value: 45, color: '#3b82f6' },
+  { name: 'เครื่องพ่นยา', value: 38, color: '#10b981' },
+  { name: 'เครื่องหว่านปุ๋ย', value: 32, color: '#f59e0b' },
+  { name: 'ปั๊มน้ำ', value: 28, color: '#ef4444' },
+  { name: 'โดรนการเกษตร', value: 25, color: '#8b5cf6' },
 ];
 
 export const timeSlots: TimeSlot[] = [
