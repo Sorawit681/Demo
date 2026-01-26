@@ -31,11 +31,8 @@ export default function Page() {
       <div className="p-8 space-y-10 bg-slate-50 min-h-screen">
         <div>
           <h1 className="text-3xl font-bold text-indigo-700">
-            ระบบจองอุปกรณ์
+            แดชบอร์ดระบบจองอุปกรณ์
           </h1>
-          <p className="text-gray-500">
-            จัดการและติดตามการจองอุปกรณ์
-          </p>
         </div>
 
         <SummaryCards />
