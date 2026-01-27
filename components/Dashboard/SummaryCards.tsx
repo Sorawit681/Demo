@@ -1,37 +1,52 @@
 // components/Dashboard/SummaryCards.tsx
 'use client'
 
-import React from 'react';
+import React, { ElementType } from 'react';
 import { SimpleGrid, Box, Text, Flex, Icon } from '@chakra-ui/react';
 import { FaWallet, FaArrowUp, FaArrowDown } from 'react-icons/fa';
-import { summaryData } from './mockData';
 
-export const SummaryCards = () => {
+// 1. Interface สำหรับข้อมูลที่จะรับเข้ามาใน Component หลัก
+interface SummaryCardsProps {
+  income: number;
+  expense: number;
+  balance: number;
+}
+
+// 2. Interface สำหรับ Props ของ Card แต่ละใบ (แก้ปัญหา any)
+interface CardProps {
+  title: string;
+  amount: number;
+  color: string;
+  bg: string;
+  icon: ElementType; // ใช้ ElementType สำหรับ Component ที่ส่งมาเป็น Icon
+}
+
+export const SummaryCards = ({ income, expense, balance }: SummaryCardsProps) => {
   return (
     <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} mb={8}>
       
-      {/* 1. การ์ดรายรับ (สีเขียว) */}
+      {/* 1. การ์ดรายรับ */}
       <Card 
         title="รายรับทั้งหมด" 
-        amount={summaryData.income} 
+        amount={income} 
         color="green.500" 
         bg="green.50" 
         icon={FaArrowUp} 
       />
 
-      {/* 2. การ์ดรายจ่าย (สีแดง) */}
+      {/* 2. การ์ดรายจ่าย */}
       <Card 
         title="รายจ่ายทั้งหมด" 
-        amount={summaryData.expense} 
+        amount={expense} 
         color="red.500" 
         bg="red.50" 
         icon={FaArrowDown} 
       />
 
-      {/* 3. การ์ดเงินคงเหลือ (สีม่วง) */}
+      {/* 3. การ์ดเงินคงเหลือ */}
       <Card 
         title="เงินคงเหลือสุทธิ" 
-        amount={summaryData.balance} 
+        amount={balance} 
         color="purple.500" 
         bg="purple.50" 
         icon={FaWallet} 
@@ -41,8 +56,8 @@ export const SummaryCards = () => {
   );
 };
 
-// Component ย่อยสำหรับการ์ดแต่ละใบ
-const Card = ({ title, amount, color, bg, icon }: any) => (
+// Component ย่อย: ระบุ Type CardProps แทน any แล้ว
+const Card = ({ title, amount, color, bg, icon }: CardProps) => (
   <Box bg="white" p={6} borderRadius="xl" shadow="sm" border="1px" borderColor="gray.100">
     <Flex justify="space-between" align="center">
       <Box>
