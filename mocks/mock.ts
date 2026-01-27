@@ -67,3 +67,18 @@ export const utilization: Utilization[] = [
   { rank: 4, center: 'ศูนย์ D4', utilization: 55 },
   { rank: 5, center: 'ศูนย์ E5', utilization: 42 },
 ];
+
+export interface LineChartData {
+  date: string;
+  users: number;
+}
+
+export const lineChartData: LineChartData[] = [
+  { date: 'Mon', users: 120 },
+  { date: 'Tue', users: 200 },
+  { date: 'Wed', users: 150 },
+  { date: 'Thu', users: 278 },
+  { date: 'Fri', users: 189 },
+  { date: 'Sat', users: 239 },
+  { date: 'Sun', users: 300 },
+];

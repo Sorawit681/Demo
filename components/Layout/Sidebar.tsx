@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, VStack, HStack, Text, Icon, Button, Flex } from '@chakra-ui/react';
 import { FaWallet } from 'react-icons/fa';
-import { MdDashboard, MdCalendarToday } from 'react-icons/md';
+import { MdDashboard, MdCalendarToday, MdShowChart  } from 'react-icons/md';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -78,6 +78,20 @@ export const Sidebar = () => {
             _hover={{ bg: 'purple.100' }}
           >
             ระบบจองอุปกรณ์
+          </Button>
+
+          <Button
+            as={NextLink}
+            href="/chart"
+            variant="ghost"
+            justifyContent="flex-start"
+            leftIcon={<MdShowChart />}
+            w="100%"
+            bg={isActive('/chart') ? 'purple.50' : 'transparent'}
+            color={isActive('/chart') ? 'purple.600' : 'gray.500'}
+            _hover={{ bg: 'purple.100' }}
+          >
+            กราฟ
           </Button>
 
         </VStack>
