@@ -4,12 +4,14 @@
 import React, { useState, useMemo } from 'react';
 import { Box, Text, Grid, GridItem } from '@chakra-ui/react';
 import { Layout } from '../components/Layout/Layout';
+
 // Components
 import { FilterBar } from '../components/Dashboard/FilterBar';
 import { SummaryCards } from '../components/Dashboard/SummaryCards';
 import { OverviewChart } from '../components/Dashboard/OverviewChart';
 import { RecentTransactions } from '../components/Dashboard/RecentTransactions';
 import { MonthlyTable } from '../components/Dashboard/MonthlyTable';
+
 // Data
 import { recentTransactions, monthlyData } from '../components/Dashboard/mockData';
 
@@ -18,7 +20,7 @@ export default function Home() {
   const [filterType, setFilterType] = useState('all');
   const [filterMonth, setFilterMonth] = useState('all');
 
-  // 2. Logic กรองรายการธุรกรรม (Transactions)
+  // 2. Logic กรองรายการธุรกรรม (Transactions) - ใช้แสดงในรายการล่าสุดด้านขวาล่าง
   const filteredTransactions = useMemo(() => {
     return recentTransactions.filter(item => {
       // กรองประเภท
@@ -31,17 +33,34 @@ export default function Home() {
     });
   }, [filterType, filterMonth]);
 
-  // 3. Logic กรองข้อมูลกราฟ (Chart Data)
+  // 3. Logic กรองข้อมูลกราฟ (Chart Data) - ใช้แสดงในกราฟและตารางรายเดือน
   const filteredChartData = useMemo(() => {
     if (filterMonth === 'all') return monthlyData;
     
     // แปลงรหัสเดือนเป็นชื่อเดือนให้ตรงกับข้อมูลใน mockData
     const monthMap: Record<string, string> = {
       '01': 'ม.ค.', '02': 'ก.พ.', '03': 'มี.ค.', 
-      '04': 'เม.ย.', '05': 'พ.ค.', '06': 'มิ.ย.'
+      '04': 'เม.ย.', '05': 'พ.ค.', '06': 'มิ.ย.',
+      '07': 'ก.ค.', '08': 'ส.ค.', '09': 'ก.ย.',
+      '10': 'ต.ค.', '11': 'พ.ย.', '12': 'ธ.ค.'
     };
     return monthlyData.filter(d => d.name === monthMap[filterMonth]);
   }, [filterMonth]);
+
+  // 4. (ใหม่) Logic คำนวณยอดรวมสำหรับการ์ด SummaryCards
+  // จะคำนวณจาก filteredChartData เพื่อให้ยอดตรงกับกราฟและตาราง
+  const summaryInfo = useMemo(() => {
+    const total = filteredChartData.reduce((acc, curr) => ({
+      income: acc.income + curr.income,
+      expense: acc.expense + curr.expense,
+    }), { income: 0, expense: 0 });
+
+    return {
+      income: total.income,
+      expense: total.expense,
+      balance: total.income - total.expense
+    };
+  }, [filteredChartData]);
 
   return (
     <Layout>
@@ -60,10 +79,14 @@ export default function Home() {
         onMonthChange={setFilterMonth}
       />
 
-      {/* การ์ดสรุปยอด (ยังใช้ข้อมูลรวม ถ้าอยากกรองต้องเขียน logic เพิ่ม) */}
-      <SummaryCards />
+      {/* การ์ดสรุปยอด (ส่งค่าที่คำนวณใหม่เข้าไป) */}
+      <SummaryCards 
+        income={summaryInfo.income}
+        expense={summaryInfo.expense}
+        balance={summaryInfo.balance}
+      />
 
-      {/* กราฟและรายการล่าสุด (ส่งข้อมูลที่กรองแล้วเข้าไป) */}
+      {/* กราฟและรายการล่าสุด */}
       <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={6} mb={6}>
         <GridItem>
           <OverviewChart data={filteredChartData} />
